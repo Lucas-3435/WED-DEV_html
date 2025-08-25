@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Your Shop</title>
+
+  <style>
+    :root{
+      --blue:#0d6efd;
+      --dark:#0b172a;
+      --light:#f7f9fc;
+      --text:#243043;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      color:var(--text);
+      background:var(--light);
+      line-height:1.5;
+    }
+
+    /* A.1 Header (Photo Banner) + Name of Shop */
+    header.banner{
+      position:relative;
+      min-height:48vh;
+      display:grid;
+      place-items:center;
+      text-align:center;
+      color:white;
+      background:
+        linear-gradient( to bottom, rgba(0,0,0,.55), rgba(0,0,0,.45) ),
+        /* You can replace the Unsplash image URL below with your own */
+        url("https://images.unsplash.com/photo-1503602642458-232111445657?q=80&w=2000&auto=format&fit=crop") center/cover no-repeat;
+    }
+    header.banner h1{
+      font-size:clamp(2rem, 3vw + 1rem, 3.25rem);
+      margin:0.2rem 0 0.6rem;
+      letter-spacing:.5px;
+    }
+    header.banner p{
+      margin:0;
+      opacity:.9;
+    }
+
+    /* A.2 Navigation (blue background, white fonts) */
+    nav.site-nav{
+      position:sticky; top:0; z-index:10;
+      background:var(--blue);
+      border-bottom:2px solid rgba(255,255,255,.15);
+    }
+    nav .wrap{
+      max-width:1100px; margin:auto; display:flex; gap:1rem;
+      align-items:center; padding:.6rem 1rem;
+    }
+    nav a{
+      color:#fff; text-decoration:none; font-weight:600; padding:.5rem .75rem;
+      border-radius:.4rem; display:inline-block;
+    }
+    nav a:hover, nav a:focus{ background:rgba(255,255,255,.14) }
+
+    /* Section framing */
+    section{ padding:3rem 1rem; scroll-margin-top:4.25rem; }
+    .container{ max-width:1100px; margin:auto; }
+
+    /* A.3 Shop Information styles */
+    .card{
+      background:white; border-radius:.8rem; padding:1.25rem 1.2rem;
+      box-shadow:0 8px 18px rgba(14,29,54,.06);
+    }
+    .info h2{ margin:.2rem 0 1rem }
+    .info h5{ margin:1rem 0 .25rem; color:var(--blue) }
+
+    /* A.4 Gallery (table 4x3) */
+    .gallery-table{
+      width:100%;
+      border-collapse:separate; border-spacing:0; background:white;
+      border-radius:.8rem; overflow:hidden; box-shadow:0 8px 18px rgba(14,29,54,.06);
+    }
+    .gallery-table th, .gallery-table td{
+      border-bottom:1px solid #eef1f6;
+      vertical-align:top; padding:1rem; text-align:left;
+    }
+    .gallery-table tr:last-child td{ border-bottom:none; }
+    .gallery-item{
+      display:flex; gap:1rem; align-items:flex-start;
+    }
+    .gallery-item img{
+      width:200px; height:200px; object-fit:cover; border-radius:.5rem; flex:0 0 auto;
+      background:#e9edf5;
+    }
+    .item-title{
+      margin:.1rem 0 .4rem; font-weight:800; font-size:1.05rem;
+    }
+    .item-price{
+      margin:.5rem 0; font-weight:800; font-size:1rem;
+    }
+    .buy-btn{
+      display:inline-block; font-weight:700; border:none; cursor:pointer;
+      background:var(--blue); color:white; padding:.55rem .9rem; border-radius:.5rem;
+      text-decoration:none;
+    }
+    .buy-btn:focus, .buy-btn:hover{ filter:brightness(.95) }
+
+    /* Footer */
+    footer{
+      background:var(--dark); color:#c6d4ff; padding:2.25rem 1rem; text-align:center;
+    }
+    footer a{ color:#e7efff; }
+
+    /* Responsive tweaks for narrow screens */
+    @media (max-width:900px){
+      .gallery-item{ flex-direction:column; align-items:stretch }
+      .gallery-item img{ width:100%; height:auto; aspect-ratio:1/1 }
+      /* keep 4x3 structure but make it scroll-y friendly */
+      .gallery-table td{ display:block }
+      .gallery-table tr{ display:block; border-bottom:1px solid #eef1f6; }
+      .gallery-table tr:last-child{ border-bottom:none; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- A.1 Header (Photo Banner) Name of Shop -->
+  <header class="banner" id="home">
+    <div>
+      <h1>Blue Harbor General Store</h1>
+      <p>Your friendly neighborhood shop -- quality goods, fair prices.</p>
+    </div>
+  </header>
+
+  <!-- A.2 Navigation as Single Page Section Anchors (Blue bg, White fonts) -->
+  <nav class="site-nav" aria-label="Primary">
+    <div class="wrap">
+      <a href="#home">Home</a>
+      <a href="#shop-info">Shop Information</a>
+      <a href="#shop-gallery">Shop Gallery</a>
+      <a href="#footer">Footer</a>
+    </div>
+  </nav>
+
+  <!-- A.3 Content 1 – Shop Information -->
+  <section id="shop-info">
+    <div class="container card info">
+      <h2>Shop Name</h2>
+      <p>Blue Harbor General Store</p>
+
+      <h5>Shop Address</h5>
+      <p>123 Seaside Avenue, Barangay Mabini, City of San Isidro, PH 4000</p>
+
+      <h5>Shop Number</h5>
+      <p>+63 912 345 6789</p>
+
+      <h5>Shop Email Address</h5>
+      <p>hello@blueharborstore.ph</p>
+
+      <h5>Office Hours / Operating Hours</h5>
+      <p>Monday–Saturday: 9:00 AM – 7:00 PM<br/>Sunday: 10:00 AM – 5:00 PM</p>
+    </div>
+  </section>
+
+  <!-- A.4 Content 2 – Shop Gallery (12 Items in a 4×3 table) -->
+  <section id="shop-gallery">
+    <div class="container">
+      <h2 style="margin:0 0 1rem">Shop Gallery</h2>
+      <table class="gallery-table" aria-describedby="shop-gallery">
+        <tbody>
+          <!-- Row 1 -->
+          <tr>
+            <td>
+              <div class="gallery-item">
+                <img src="https://via.placeholder.com/200" alt="Canvas Tote Bag">
+                <div>
+                  <div class="item-title"><b>Canvas Tote Bag</b></div>
+                  <p>Durable everyday tote made from recycled cotton.</p>
+                  <div class="item-price"><b>₱399</b></div>
+                  <a href="#" class="buy-btn" aria-label="Buy Canvas Tote Bag now">Buy Now</a>
+                </div>
+              </div>
+            </td>
+            <td>
+              <div class="gallery-item">
+                <img src="https://via.placeholder.com/200" alt="Ceramic Mug">
+                <div>
+                  <div class="item-title"><b>Ceramic Mug</b></div>
+                  <p>Hand-glazed 350ml mug that keeps warmth longer.</p>
+                  <div class="item-price"><b>₱249</b></div>
+                  <a href="#" class="buy-btn" aria-label="Buy Ceramic Mug now">Buy Now</a>
+                </div>
+              </div>
+            </td>
+            <td>
+              <div class="gallery-item">
+                <img src="https://via.placeholder.com/200" alt="Bamboo Cutting Board">
+                <div>
+                  <div class="item-title"><b>Bamboo Cutting Board</b></div>
+                  <p>Knife-friendly, moisture-resistant, easy to clean.</p>
+                  <div class="item-price"><b>₱329</b></div>
+                  <a href="#" class="buy-btn" aria-label="Buy Bamboo Cutting Board now">Buy Now</a>
+                </div>
+              </div>
+            </td>
+            <td>
+              <div class="gallery-item">
+                <img src="https://via.placeholder.com/200" alt="LED Desk Lamp">
+                <div>
+                  <div class="item-title"><b>LED Desk Lamp</b></div>
+                  <p>Adjustable brightness with flexible gooseneck.</p>
+                  <div class="item-price"><b>₱699</b></div>
+                  <a href="#" class="buy-btn" aria-label="Buy LED Desk Lamp now">Buy Now</a>
+                </div>
+              </div>
+            </td>
+          </tr>
+
+          <!-- Row 2 -->
+          <tr>
+            <td>
+              <div class="gallery-item">
+                <img src="https://via.placeholder.com/200" alt="Stainless Water Bottle">
+                <div>
+                  <div class="item-title"><b>Stainless Water Bottle</b></div>
+                  <p>Vacuum-insulated 600ml, keeps drinks cold 24h.</p>
+                  <div class="item-price"><b>₱799</b></div>
+                  <a href="#" class="buy-btn" aria-label="Buy Stainless Water Bottle now">Buy Now</a>
+                </div>
+              </div>
+            </td>
+            <td>
+              <div class="gallery-item">
+                <img src="https://via.placeholder.com/200" alt="Notebook Set">
+                <div>
+                  <div class="item-title"><b>Notebook Set</b></div>
+                  <p>3-pack dotted A5 notebooks with thick paper.</p>
+                  <div class="item-price"><b>₱199</b></div>
+                  <a href="#" class="buy-btn" aria-label="Buy Notebook Set now">Buy Now</a>
+                </div>
+              </div>
+            </td>
+            <td>
+              <div class="gallery-item">
+                <img src="https://via.placeholder.com/200" alt="Wireless Earbuds">
+                <div>
+                  <div class="item-title"><b>Wireless Earbuds</b></div>
+                  <p>Bluetooth 5.3, 24-hour battery with charging case.</p>
+                  <div class="item-price"><b>₱1,499</b></div>
+                  <a href="#" class="buy-btn" aria-label="Buy Wireless Earbuds now">Buy Now</a>
+                </div>
+              </div>
+            </td>
+            <td>
+              <div class="gallery-item">
+                <img src="https://via.placeholder.com/200" alt="Scented Candle">
+                <div>
+                  <div class="item-title"><b>Scented Candle</b></div>
+                  <p>Clean-burn soy wax with ocean breeze aroma.</p>
+                  <div class="item-price"><b>₱279</b></div>
+                  <a href="#" class="buy-btn" aria-label="Buy Scented Candle now">Buy Now</a>
+                </div>
+              </div>
+            </td>
+          </tr>
+
+          <!-- Row 3 -->
+          <tr>
+            <td>
+              <div class="gallery-item">
+                <img src="https://via.placeholder.com/200" alt="Microfiber Towel">
+                <div>
+                  <div class="item-title"><b>Microfiber Towel</b></div>
+                  <p>Quick-dry gym towel, compact and ultra-soft.</p>
+                  <div class="item-price"><b>₱159</b></div>
+                  <a href="#" class="buy-btn" aria-label="Buy Microfiber Towel now">Buy Now</a>
+                </div>
+              </div>
+            </td>
+            <td>
+              <div class="gallery-item">
+                <img src="https://via.placeholder.com/200" alt="Portable Fan">
+                <div>
+                  <div class="item-title"><b>Portable Fan</b></div>
+                  <p>USB-C rechargeable, 3 speeds, desk or handheld.</p>
+                  <div class="item-price"><b>₱549</b></div>
+                  <a href="#" class="buy-btn" aria-label="Buy Portable Fan now">Buy Now</a>
+                </div>
+              </div>
+            </td>
+            <td>
+              <div class="gallery-item">
+                <img src="https://via.placeholder.com/200" alt="Phone Stand">
+                <div>
+                  <div class="item-title"><b>Adjustable Phone Stand</b></div>
+                  <p>Aluminum alloy, angle & height adjustable.</p>
+                  <div class="item-price"><b>₱299</b></div>
+                  <a href="#" class="buy-btn" aria-label="Buy Adjustable Phone Stand now">Buy Now</a>
+                </div>
+              </div>
+            </td>
+            <td>
+              <div class="gallery-item">
+                <img src="https://via.placeholder.com/200" alt="Desk Organizer">
+                <div>
+                  <div class="item-title"><b>Desk Organizer</b></div>
+                  <p>Keep pens, notes, and gadgets tidy in one spot.</p>
+                  <div class="item-price"><b>₱369</b></div>
+                  <a href="#" class="buy-btn" aria-label="Buy Desk Organizer now">Buy Now</a>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="footer" role="contentinfo">
+    <div class="container">
+      <p>&copy; <span id="year"></span> Blue Harbor General Store. All rights reserved.</p>
+      <p><a href="#home">Back to top ↑</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // Set current year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
